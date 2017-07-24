@@ -33,6 +33,11 @@ $database = "foodtrucks";
 define("MODE", "dev");
 // Chemins d'accès aux répertoires
 define("VIEWS_DIRECTORY", "../private/views/");
+define("FUNCTIONS_DIRECTORY", "../private/functions/");
+define("MODELS_DIRECTORY", "../private/models/");
+// Expressions régulières pour les noms de fichiers
+define("FUNCTIONS_FILES", "/^fnc-.*\.php$/i");
+define("MODELS_FILES", "/^mdl-.*\.php$/i");
 
 
 

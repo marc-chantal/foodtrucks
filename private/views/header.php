@@ -16,6 +16,17 @@
 
 			<div class="masthead">
 				<h3 class="text-muted">Les Foodtrucks du coin <?php for($i=0;$i<rand(1,100);$i++) echo '!';?> </h3>
+
+				<nav>
+				<?php if( isset($_SESSION['user']['id']) && !empty($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id']) ) :
+				?>
+					<a href="index.php?page=profile">$UserName</a>
+				<?php else : ?>
+					<a href="index.php?page=register">Inscription</a>
+					<a href="index.php?page=login">Connexion</a>
+				<?php endif; ?>
+				</nav>
+
 				<nav>
 					<ul class="nav nav-justified">
 						<li class="active"><a href="index.php?page=home">Home</a></li>
@@ -26,3 +37,4 @@
 			</div>
 
 			<div id="content">
+				<?php getFlashbag(); ?>

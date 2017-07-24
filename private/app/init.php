@@ -1,7 +1,20 @@
 <?php
 
-include_once '../private/app/config.php'; // chemin complet, car il sera appelé depuis index.php
-include_once '../private/app/routes.php';
+// on écrit le chemin complet, car il sera appelé depuis index.php
+include_once '../private/app/config.php'; // constantes, variables et cie
+include_once '../private/app/routes.php'; // liste des pages du site
+include_once '../private/app/autoload.php'; // pour pouvoir charger fonctions et modèles, ci-dessous
+
+
+// ----------
+// AUTOLOADER
+// ----------
+
+// Autoload des fonctions / contrôleurs
+autoload(FUNCTIONS_DIRECTORY, FUNCTIONS_FILES);
+
+// Autoload des modèles
+//autoload(MODELS_DIRECTORY, MODELS_FILES);
 
 
 // -------------------------
@@ -9,8 +22,6 @@ include_once '../private/app/routes.php';
 // -------------------------
 
 session_start();
-var_dump($_SESSION);
-phpinfo();
 
 
 // -------------
@@ -61,8 +72,8 @@ if (
     &&
     !(isset($_SESSION['user']['id']) && !empty($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id']))
 ) {
-    //setFlashbag("warning","Vous n'êtes pas autorisé à afficher la page ".$page);
+    setFlashbag("warning","Vous n'êtes pas autorisé à afficher la page ".$page);
     header("location: index.php?page=login");
-    exit; // <= NE PAS OUBLIER après un header()
+    exit; // <= NE PAS OUBLIER de mettre exit; après un header()
 }
 
