@@ -14,7 +14,7 @@ include_once '../private/app/autoload.php'; // pour pouvoir charger fonctions et
 autoload(FUNCTIONS_DIRECTORY, FUNCTIONS_FILES);
 
 // Autoload des modèles
-//autoload(MODELS_DIRECTORY, MODELS_FILES);
+autoload(MODELS_DIRECTORY, MODELS_FILES);
 
 
 // -------------------------
@@ -31,7 +31,10 @@ session_start();
 // On teste la connexion à la BDD
 try {
     // Création de la connexion à la base de données
-    $pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $user, $pass);
+    $pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $user, $pass, [
+        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]);
     if (MODE === "dev") {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }

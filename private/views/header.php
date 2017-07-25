@@ -20,7 +20,7 @@
 				<nav>
 				<?php if( isset($_SESSION['user']['id']) && !empty($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id']) ) :
 				?>
-					<a href="index.php?page=profile">$UserName</a>
+					<a href="index.php?page=profile"><?php echo $_SESSION['user']['firstname']; ?></a>
 				<?php else : ?>
 					<a href="index.php?page=register">Inscription</a>
 					<a href="index.php?page=login">Connexion</a>

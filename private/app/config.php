@@ -38,6 +38,10 @@ define("MODELS_DIRECTORY", "../private/models/");
 // Expressions régulières pour les noms de fichiers
 define("FUNCTIONS_FILES", "/^fnc-.*\.php$/i");
 define("MODELS_FILES", "/^mdl-.*\.php$/i");
+// Utilisateurs
+define("ROLES_GLUE", ",");
+define("ROLES_USER", "USER");
+define("ROLES_ADMIN", "ADMIN");
 
 
 
@@ -46,3 +50,5 @@ define("MODELS_FILES", "/^mdl-.*\.php$/i");
 // --------------------
 
 $default_page = "home";
+$default_lang="fr";
+$default_users_roles = [ROLES_USER];
