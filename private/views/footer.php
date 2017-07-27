@@ -11,6 +11,7 @@
 		<script src="vendor/jquery-3.2.1.min.js"></script>
 		<!-- Bootstrap -->
 		<script src="vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<script src="assets/js/renewpwd.js"></script>
 
 	</body>
 </html>

@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $acceptTerms = isset($_POST['acceptTerms']) ? $_POST['acceptTerms'] : null;
 
     // Contrôler l'intégrité du token : le serveur qui contrôle le formulaire doit être celui qui a créé le formulaire
-    if($token != $_SESSION['token']) {
+    if(!isset($_SESSION['token']) || empty($_SESSION['token']) || $_SESSION['token'] != $token) {
         $save = false;
         setFlashbag("danger", "Le token est invalide.");
     }
@@ -102,6 +102,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // --
     // -> doit être une date valide
     // -> doit être supérieur à 13ans au moment de l'inscription
+    var_dump($birth_year);
+    var_dump($birth_month);
+    var_dump($birth_day);
     if( !( is_numeric($birth_year) && is_numeric($birth_month) && is_numeric($birth_day) ) ) {
         $save = false;
         setFlashbag("danger", "Veuillez entrer une date valide.");

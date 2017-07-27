@@ -55,3 +55,4 @@ function addUser($params=[]) {
 
     return $pdo->lastInsertId();
 }
+

@@ -77,6 +77,16 @@ if (
 ) {
     setFlashbag("warning","Vous n'êtes pas autorisé à afficher la page ".$page);
     header("location: index.php?page=login");
-    exit; // <= NE PAS OUBLIER de mettre exit; après un header()
+    exit; // <= /!\ NE PAS OUBLIER de mettre exit; après un header()
 }
 
+
+// --------------------------
+// PSEUDO-PAGE DE DÉCONNEXION
+// --------------------------
+
+if($page == "logout") {
+    session_destroy();
+    header("location: index.php");
+    exit; // <= /!\ NE PAS OUBLIER de mettre exit; après un header()
+}
