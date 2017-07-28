@@ -56,3 +56,21 @@ function addUser($params=[]) {
     return $pdo->lastInsertId();
 }
 
+function getPwd($id) {
+    global $pdo;
+    $q = "SELECT password FROM `".TABLE_USERS."` WHERE id=:id";
+    $q = $pdo->prepare($q);
+    $q->bindValue(":id", $id, PDO::PARAM_INT);
+    $q->execute();
+    return $q->fetch();
+}
+
+function changePwd($id, $pwd) {
+    global $pdo;
+    $q = "UPDATE `".TABLE_USERS."` SET `password` = :pwd WHERE `id` = :id";
+    $q = $pdo->prepare($q);
+    $q->bindValue(":pwd", password_hash($pwd, PASSWORD_DEFAULT), PDO::PARAM_STR);
+    $q->bindValue(":id", $id, PDO::PARAM_INT);
+    $q->execute();
+    return $pdo->lastInsertId();
+}
